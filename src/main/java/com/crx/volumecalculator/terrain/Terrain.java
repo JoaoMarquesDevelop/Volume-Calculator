@@ -2,6 +2,8 @@ package com.crx.volumecalculator.terrain;
 
 import lombok.*;
 
+import java.util.ArrayList;
+
 // Used only on Server side
 
 @Getter
@@ -14,10 +16,6 @@ public class Terrain {
 
     public Terrain(Integer[] data){
         this.data = data;
-        this.waterVolume = calculateWaterVolume(data);
-    }
-
-    private int calculateWaterVolume(Integer[] data){
-        return data.length;
+        this.waterVolume = TerrainCalculationHelper.calculateWaterVolume(data);
     }
 }
