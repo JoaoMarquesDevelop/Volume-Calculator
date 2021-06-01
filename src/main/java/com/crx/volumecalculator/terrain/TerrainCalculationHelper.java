@@ -29,18 +29,20 @@ public class TerrainCalculationHelper {
     // Adding up the number of empty spaces between the selected indexes (forming the "fragmented slice of water")
 
     private static int calculateVolumeInTheCurrentSlice(ArrayList<Integer> indexes){
-        int volumeInTheCurrentSlice = 0;
+        int volumeInTheCurrentHeight = 0;
 
         for (int i = 0; i < indexes.size() - 1; i++) {
-            int currentIndex = indexes.get(i);
-            int nextIndex = indexes.get(i+1);
 
-            if (nextIndex != currentIndex + 1){
-                volumeInTheCurrentSlice += nextIndex - currentIndex - 1;
+            int leftMountain = indexes.get(i);
+            int rightMountain = indexes.get(i+1);
+
+            // Get the space between two mountains
+            if (rightMountain != leftMountain + 1){
+                volumeInTheCurrentHeight += rightMountain - leftMountain - 1;
             }
         }
 
-        return volumeInTheCurrentSlice;
+        return volumeInTheCurrentHeight;
     }
 
 
